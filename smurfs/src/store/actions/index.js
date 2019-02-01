@@ -14,6 +14,7 @@ import {
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
   DELETE_SMURF_FAILURE,
+  TOGGLE_UPDATE_MODE,
   UPDATE_SMURF_START,
   UPDATE_SMURF_SUCCESS,
   UPDATE_SMURF_FAILURE
@@ -38,16 +39,15 @@ export const handleTextInputChange = e => dispatch =>
 export const addSmurf = (name, age, height) => dispatch => {
   dispatch({ type: ADD_SMURF_START });
   axios
-    // Quickly convert age & height from input strings to numbers with shorthand (+) sign
-    .post(`${baseURL}/smurfs`, { name, age: +age, height: +height })
+    .post(`${baseURL}/smurfs`, { name, age: age, height: height })
     .then(res => dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: ADD_SMURF_FAILURE, payload: err }));
 };
 
-export const querySmurfInfo = e => dispatch => {
+export const querySmurfInfo = id => dispatch => {
   dispatch({ type: SELECT_SMURF_START });
   axios
-    .get(`${baseURL}/smurfs/${e.currentTarget.value}`)
+    .get(`${baseURL}/smurfs/${id}`)
     .then(res => dispatch({ type: SELECT_SMURF_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: SELECT_SMURF_FAILURE, payload: err }));
 };
@@ -59,3 +59,14 @@ export const deleteSmurf = id => dispatch => {
     .then(res => dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETE_SMURF_FAILURE, payload: err }));
 };
+
+export const updateSmurf = (id, smurfUpdateInfo) => dispatch => {
+  dispatch({ type: UPDATE_SMURF_START });
+  axios
+    .put(`${baseURL}/smurfs/${id}`, smurfUpdateInfo)
+    .then(res => dispatch({ type: UPDATE_SMURF_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: UPDATE_SMURF_FAILURE, payload: err }));
+};
+
+export const toggleUpdateMode = selectedSmurf => dispatch =>
+  dispatch({ type: TOGGLE_UPDATE_MODE, payload: selectedSmurf });

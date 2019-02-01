@@ -12,6 +12,7 @@ import {
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
   DELETE_SMURF_FAILURE,
+  TOGGLE_UPDATE_MODE,
   UPDATE_SMURF_START,
   UPDATE_SMURF_SUCCESS,
   UPDATE_SMURF_FAILURE
@@ -23,6 +24,7 @@ let initialState = {
   newHeight: "",
   smurfs: [],
   selectedSmurf: null,
+  isInUpdateMode: false,
   isFetchingSmurfs: false,
   hasFetchedSmurfs: false,
   isSavingSmurf: false,
@@ -98,7 +100,8 @@ const smurfDataReducer = (state = initialState, action) => {
         ...state,
         isQueryingSmurf: false,
         hasQueriedSmurf: true,
-        selectedSmurf: action.payload
+        selectedSmurf: action.payload,
+        isInUpdateMode: false
       };
     case SELECT_SMURF_FAILURE:
       return {
@@ -128,6 +131,39 @@ const smurfDataReducer = (state = initialState, action) => {
       return {
         ...state,
         isDeletingSmurf: false,
+        error: action.payload
+      };
+    case TOGGLE_UPDATE_MODE:
+      return {
+        ...state,
+        newName: state.isInUpdateMode ? "" : action.payload.name,
+        newAge: state.isInUpdateMode ? "" : action.payload.age,
+        newHeight: state.isInUpdateMode ? "" : action.payload.height,
+        isInUpdateMode: !state.isInUpdateMode
+      };
+    case UPDATE_SMURF_START:
+      return {
+        ...state,
+        isUpdatingSmurf: true,
+        hasUpdatedSmurf: false,
+        error: null
+      };
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload.smurfs,
+        selectedSmurf: action.payload.foundSmurf,
+        isInUpdateMode: false,
+        isUpdatingSmurf: false,
+        hasUpdatedSmurf: true,
+        newName: "",
+        newAge: "",
+        newHeight: ""
+      };
+    case UPDATE_SMURF_FAILURE:
+      return {
+        ...state,
+        isUpdatingSmurf: false,
         error: action.payload
       };
     default:

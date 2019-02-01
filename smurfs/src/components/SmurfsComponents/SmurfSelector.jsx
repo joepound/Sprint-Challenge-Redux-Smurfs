@@ -26,13 +26,17 @@ class SmurfSelector extends Component {
     this.props.getSmurfs();
   }
 
+  querySmurfInfo = e => {
+    this.props.querySmurfInfo(e.currentTarget.value);
+  };
+
   render() {
-    return (
+    return this.props.smurfs.length ? (
       <div className="smurfs-app__select-smurf">
         <label htmlFor="smurfSelect">Your Smurf List:</label>
         <select
           className="smurfs-app__select-smurf__dropdown"
-          onChange={this.props.querySmurfInfo}
+          onChange={this.querySmurfInfo}
         >
           <option
             className="smurfs-app__select-smurf__dropdown__option"
@@ -52,6 +56,8 @@ class SmurfSelector extends Component {
           ))}
         </select>
       </div>
+    ) : (
+      "Add some smurfs...."
     );
   }
 }

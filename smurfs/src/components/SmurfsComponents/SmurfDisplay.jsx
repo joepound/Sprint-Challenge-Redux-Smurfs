@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { deleteSmurf } from "../../store/actions";
+import { deleteSmurf, toggleUpdateMode } from "../../store/actions";
 
 const SmurfDisplay = props => {
   const deleteSmurf = e => {
@@ -13,8 +13,18 @@ const SmurfDisplay = props => {
     ) && props.deleteSmurf(props.selectedSmurf.id);
   };
 
+  const toggleUpdateMode = e => {
+    props.toggleUpdateMode(props.selectedSmurf);
+  };
+
   return props.selectedSmurf ? (
     <div>
+      <input
+        type="image"
+        src=""
+        alt="toggle update mode"
+        onClick={toggleUpdateMode}
+      />
       <h2>{`${props.selectedSmurf.name}`}</h2>
       <div>
         <span>Age: </span>
@@ -22,7 +32,7 @@ const SmurfDisplay = props => {
       </div>
       <div>
         <span>Height: </span>
-        <span>{props.selectedSmurf.height}</span>
+        <span>{`${props.selectedSmurf.height}cm.`}</span>
       </div>
       <div>
         <button type="button" onClick={deleteSmurf}>
@@ -31,22 +41,25 @@ const SmurfDisplay = props => {
       </div>
     </div>
   ) : (
-    <div>(select a smurf to display)</div>
+    props.hasSmurfs && <div>(select a smurf to display)</div>
   );
 };
 
 SmurfDisplay.propTypes = {
+  hasSmurfs: PropTypes.bool.isRequired,
   selectedSmurf: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     age: PropTypes.number,
     height: PropTypes.number
   }),
-  deleteSmurf: PropTypes.func.isRequired
+  deleteSmurf: PropTypes.func.isRequired,
+  toggleUpdateMode: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
   return {
+    hasSmurfs: state.smurfDataReducer.smurfs.length > 1,
     selectedSmurf: state.smurfDataReducer.selectedSmurf
   };
 };
@@ -54,6 +67,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    deleteSmurf
+    deleteSmurf,
+    toggleUpdateMode
   }
 )(SmurfDisplay);
