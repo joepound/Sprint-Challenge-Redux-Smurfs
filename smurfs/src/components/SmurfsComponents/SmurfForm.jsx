@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import {
   handleTextInputChange,
+  clearTextInputs,
   addSmurf,
   updateSmurf
 } from "../../store/actions";
@@ -126,7 +127,9 @@ const SmurfForm = props => {
           />
         </div>
         <div className="smurfs-app__new-info-form__action-buttons">
-          <div>Clear</div>
+          <button type="button" onClick={props.clearTextInputs}>
+            Clear
+          </button>
           {props.isInUpdateMode ? (
             <button>Update Smurf</button>
           ) : (
@@ -171,6 +174,7 @@ export default connect(
   mapStateToProps,
   {
     handleTextInputChange,
+    clearTextInputs,
     addSmurf,
     updateSmurf
   }

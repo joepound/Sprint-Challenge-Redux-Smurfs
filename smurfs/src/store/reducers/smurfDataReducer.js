@@ -3,6 +3,7 @@ import {
   FETCH_SMURFS_SUCCESS,
   FETCH_SMURFS_FAILURE,
   HANDLE_TEXT_INPUT_CHANGE,
+  CLEAR_TEXT_INPUTS,
   ADD_SMURF_START,
   ADD_SMURF_SUCCESS,
   ADD_SMURF_FAILURE,
@@ -64,6 +65,13 @@ const smurfDataReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.payload.name]: action.payload.value
+      };
+    case CLEAR_TEXT_INPUTS:
+      return {
+        ...state,
+        newName: "",
+        newAge: "",
+        newHeight: ""
       };
     case ADD_SMURF_START:
       return {

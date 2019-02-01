@@ -5,6 +5,7 @@ import {
   FETCH_SMURFS_SUCCESS,
   FETCH_SMURFS_FAILURE,
   HANDLE_TEXT_INPUT_CHANGE,
+  CLEAR_TEXT_INPUTS,
   ADD_SMURF_START,
   ADD_SMURF_SUCCESS,
   ADD_SMURF_FAILURE,
@@ -35,6 +36,9 @@ export const handleTextInputChange = e => dispatch =>
     type: HANDLE_TEXT_INPUT_CHANGE,
     payload: e.target
   });
+
+export const clearTextInputs = () => dispatch =>
+  dispatch({ type: CLEAR_TEXT_INPUTS });
 
 export const addSmurf = (name, age, height) => dispatch => {
   dispatch({ type: ADD_SMURF_START });
