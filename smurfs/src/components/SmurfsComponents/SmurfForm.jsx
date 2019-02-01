@@ -28,66 +28,73 @@ const SmurfForm = props => {
   };
 
   return (
-    <form className="smurfs-app__new-info-form" onSubmit={addSmurf}>
-      <div className="smurfs-app__new-info-form__field">
-        <label
-          className="smurfs-app__new-info-form__field__label"
-          htmlFor="newName"
-        >
-          Name:
-        </label>
-        <input
-          className="smurfs-app__new-info-form__field__input"
-          id="newName"
-          type="text"
-          placeholder="Enter your smurf's name"
-          required
-          name="newName"
-          value={props.newName}
-          onChange={props.handleTextInputChange}
-        />
-      </div>
-      <div className="smurfs-app__new-info-form__field">
-        <label
-          className="smurfs-app__new-info-form__field__label"
-          htmlFor="newAge"
-        >
-          Age:
-        </label>
-        <input
-          className="smurfs-app__new-info-form__field__input"
-          id="newAge"
-          type="number"
-          placeholder="Age"
-          required
-          name="newAge"
-          value={props.newAge}
-          onChange={props.handleTextInputChange}
-        />
-      </div>
-      <div className="smurfs-app__new-info-form__field">
-        <label
-          className="smurfs-app__new-info-form__field__label"
-          htmlFor="newHeight"
-        >
-          Height (in centimeters):
-        </label>
-        <input
-          className="smurfs-app__new-info-form__field__input"
-          id="newHeight"
-          type="number"
-          placeholder="cm."
-          required
-          name="newHeight"
-          value={props.newHeight}
-          onChange={props.handleTextInputChange}
-        />
-      </div>
-      <div className="smurfs-app__new-info-form__action-buttons">
-        <div>Clear</div>
-        <button>Add Smurf</button>
-      </div>
-    </form>
+    <React.Fragment>
+      {props.isInUpdateMode && (
+        <span className="smurfs-app__new-info-form__updatee">
+        NOW UPDATING: {props.selectedSmurf.toUpperCase()}
+        </span>
+      )}
+      <form className="smurfs-app__new-info-form" onSubmit={addSmurf}>
+        <div className="smurfs-app__new-info-form__field">
+          <label
+            className="smurfs-app__new-info-form__field__label"
+            htmlFor="newName"
+          >
+            Name:
+          </label>
+          <input
+            className="smurfs-app__new-info-form__field__input"
+            id="newName"
+            type="text"
+            placeholder="Enter your smurf's name"
+            required
+            name="newName"
+            value={props.newName}
+            onChange={props.handleTextInputChange}
+          />
+        </div>
+        <div className="smurfs-app__new-info-form__field">
+          <label
+            className="smurfs-app__new-info-form__field__label"
+            htmlFor="newAge"
+          >
+            Age:
+          </label>
+          <input
+            className="smurfs-app__new-info-form__field__input"
+            id="newAge"
+            type="number"
+            placeholder="Age"
+            required
+            name="newAge"
+            value={props.newAge}
+            onChange={props.handleTextInputChange}
+          />
+        </div>
+        <div className="smurfs-app__new-info-form__field">
+          <label
+            className="smurfs-app__new-info-form__field__label"
+            htmlFor="newHeight"
+          >
+            Height (in centimeters):
+          </label>
+          <input
+            className="smurfs-app__new-info-form__field__input"
+            id="newHeight"
+            type="number"
+            placeholder="cm."
+            required
+            name="newHeight"
+            value={props.newHeight}
+            onChange={props.handleTextInputChange}
+          />
+        </div>
+        <div className="smurfs-app__new-info-form__action-buttons">
+          <div>Clear</div>
+          <button>Add Smurf</button>
+        </div>
+      </form>
+    </React.Fragment>
   );
 };
 
@@ -98,6 +105,8 @@ SmurfForm.propTypes = {
   // Allow string type to be able to set controlled height input to be empty
   newHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     .isRequired,
+  selectedSmurfName: PropTypes.string,
+  isInUpdateMode: PropTypes.bool.isRequired,
   handleTextInputChange: PropTypes.func.isRequired,
   addSmurf: PropTypes.func.isRequired
 };
@@ -106,7 +115,12 @@ const mapStateToProps = state => {
   return {
     newName: state.smurfDataReducer.newName,
     newAge: state.smurfDataReducer.newAge,
-    newHeight: state.smurfDataReducer.newHeight
+    newHeight: state.smurfDataReducer.newHeight,
+    selectedSmurf:
+      state.smurfDataReducer.selectedSmurf === null
+        ? null
+        : state.smurfDataReducer.selectedSmurf.name,
+    isInUpdateMode: state.smurfDataReducer.isInUpdateMode
   };
 };
 
