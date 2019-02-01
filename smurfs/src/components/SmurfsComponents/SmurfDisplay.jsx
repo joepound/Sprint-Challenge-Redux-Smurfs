@@ -13,13 +13,17 @@ const SmurfDisplay = props => {
     ) && props.deleteSmurf(props.selectedSmurf.id);
   };
 
+  const toggleUpdateMode = e => {
+    props.toggleUpdateMode(props.selectedSmurf);
+  };
+
   return props.selectedSmurf ? (
     <div>
       <input
         type="image"
         src=""
         alt="toggle update mode"
-        onClick={props.toggleUpdateMode}
+        onClick={toggleUpdateMode}
       />
       <h2>{`${props.selectedSmurf.name}`}</h2>
       <div>

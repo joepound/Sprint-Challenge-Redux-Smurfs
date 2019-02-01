@@ -100,7 +100,8 @@ const smurfDataReducer = (state = initialState, action) => {
         ...state,
         isQueryingSmurf: false,
         hasQueriedSmurf: true,
-        selectedSmurf: action.payload
+        selectedSmurf: action.payload,
+        isInUpdateMode: false
       };
     case SELECT_SMURF_FAILURE:
       return {
@@ -135,6 +136,9 @@ const smurfDataReducer = (state = initialState, action) => {
     case TOGGLE_UPDATE_MODE:
       return {
         ...state,
+        newName: state.isInUpdateMode ? "" : action.payload.name,
+        newAge: state.isInUpdateMode ? "" : action.payload.age,
+        newHeight: state.isInUpdateMode ? "" : action.payload.height,
         isInUpdateMode: !state.isInUpdateMode
       };
     default:

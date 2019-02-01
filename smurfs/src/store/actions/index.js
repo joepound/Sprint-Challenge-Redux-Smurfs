@@ -61,5 +61,5 @@ export const deleteSmurf = id => dispatch => {
     .catch(err => dispatch({ type: DELETE_SMURF_FAILURE, payload: err }));
 };
 
-export const toggleUpdateMode = () => dispatch =>
-  dispatch({ type: TOGGLE_UPDATE_MODE });
+export const toggleUpdateMode = selectedSmurf => dispatch =>
+  dispatch({ type: TOGGLE_UPDATE_MODE, payload: selectedSmurf });
