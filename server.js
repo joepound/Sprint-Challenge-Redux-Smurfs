@@ -53,6 +53,7 @@ server.post("/smurfs", (req, res) => {
   }
 
   smurfs.push(newSmurf);
+  smurfs.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
   res.json(smurfs);
 });
 
