@@ -32,18 +32,18 @@ const SmurfForm = props => {
       <div className="smurfs-app__new-info-form__field">
         <label
           className="smurfs-app__new-info-form__field__label"
-          htmlFor="newFirstName"
+          htmlFor="newName"
         >
-          First Name:
+          Name:
         </label>
         <input
           className="smurfs-app__new-info-form__field__input"
-          id="newFirstName"
+          id="newName"
           type="text"
           placeholder="Enter your smurf's name"
           required
-          name="newFirstName"
-          value={props.newFirstName}
+          name="newName"
+          value={props.newName}
           onChange={props.handleTextInputChange}
         />
       </div>

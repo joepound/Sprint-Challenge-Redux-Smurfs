@@ -21,7 +21,6 @@ let initialState = {
   newName: "",
   newAge: "",
   newHeight: "",
-  newEmail: "",
   smurfs: [],
   selectedSmurf: null,
   isFetchingSmurfs: false,
