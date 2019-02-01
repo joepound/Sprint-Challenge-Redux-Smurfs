@@ -62,11 +62,14 @@ const SmurfForm = props => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {props.isInUpdateMode && (
-        <span className="smurfs-app__new-info-form__updatee">
-          NOW UPDATING: {props.selectedSmurf.name.toUpperCase()}
-        </span>
+        <div className="smurfs-app__updatee">
+          Now Updating:{" "}
+          <span className="smurfs-app__updatee__name">
+            {props.selectedSmurf.name}
+          </span>
+        </div>
       )}
       <form
         className="smurfs-app__new-info-form"
@@ -137,7 +140,7 @@ const SmurfForm = props => {
           )}
         </div>
       </form>
-    </React.Fragment>
+    </>
   );
 };
 

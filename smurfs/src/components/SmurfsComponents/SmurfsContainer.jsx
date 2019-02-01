@@ -6,11 +6,11 @@ import SmurfDisplay from "./SmurfDisplay";
 
 const SmurfsContainer = props => {
   return (
-    <React.Fragment>
+    <>
       <SmurfForm />
       <SmurfSelector />
       <SmurfDisplay />
-    </React.Fragment>
+    </>
   );
 };
 

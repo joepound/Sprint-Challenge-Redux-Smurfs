@@ -1,3 +1,12 @@
-.new-info-form {
-  
+.smurfs-app__updatee {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $smurf-blue;
+  margin-bottom: 20px;
+
+  &__name {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
 }
