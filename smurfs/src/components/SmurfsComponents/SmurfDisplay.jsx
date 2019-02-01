@@ -41,11 +41,12 @@ const SmurfDisplay = props => {
       </div>
     </div>
   ) : (
-    <div>(select a smurf to display)</div>
+    props.hasSmurfs && <div>(select a smurf to display)</div>
   );
 };
 
 SmurfDisplay.propTypes = {
+  hasSmurfs: PropTypes.bool.isRequired,
   selectedSmurf: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -58,6 +59,7 @@ SmurfDisplay.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    hasSmurfs: state.smurfDataReducer.smurfs.length > 1,
     selectedSmurf: state.smurfDataReducer.selectedSmurf
   };
 };

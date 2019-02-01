@@ -31,7 +31,7 @@ class SmurfSelector extends Component {
   };
 
   render() {
-    return (
+    return this.props.smurfs.length ? (
       <div className="smurfs-app__select-smurf">
         <label htmlFor="smurfSelect">Your Smurf List:</label>
         <select
@@ -56,6 +56,8 @@ class SmurfSelector extends Component {
           ))}
         </select>
       </div>
+    ) : (
+      "Add some smurfs...."
     );
   }
 }
