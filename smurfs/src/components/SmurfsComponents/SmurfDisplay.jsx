@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { deleteSmurf } from "../../store/actions";
+import { deleteSmurf, toggleUpdateMode } from "../../store/actions";
 
 const SmurfDisplay = props => {
   const deleteSmurf = e => {
@@ -15,6 +15,12 @@ const SmurfDisplay = props => {
 
   return props.selectedSmurf ? (
     <div>
+      <input
+        type="image"
+        src=""
+        alt="toggle update mode"
+        onClick={props.toggleUpdateMode}
+      />
       <h2>{`${props.selectedSmurf.name}`}</h2>
       <div>
         <span>Age: </span>
@@ -22,7 +28,7 @@ const SmurfDisplay = props => {
       </div>
       <div>
         <span>Height: </span>
-        <span>{props.selectedSmurf.height}</span>
+        <span>{`${props.selectedSmurf.height}cm.`}</span>
       </div>
       <div>
         <button type="button" onClick={deleteSmurf}>
@@ -42,7 +48,8 @@ SmurfDisplay.propTypes = {
     age: PropTypes.number,
     height: PropTypes.number
   }),
-  deleteSmurf: PropTypes.func.isRequired
+  deleteSmurf: PropTypes.func.isRequired,
+  toggleUpdateMode: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -54,6 +61,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    deleteSmurf
+    deleteSmurf,
+    toggleUpdateMode
   }
 )(SmurfDisplay);

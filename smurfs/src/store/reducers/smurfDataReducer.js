@@ -12,6 +12,7 @@ import {
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
   DELETE_SMURF_FAILURE,
+  TOGGLE_UPDATE_MODE,
   UPDATE_SMURF_START,
   UPDATE_SMURF_SUCCESS,
   UPDATE_SMURF_FAILURE
@@ -23,6 +24,7 @@ let initialState = {
   newHeight: "",
   smurfs: [],
   selectedSmurf: null,
+  isInUpdateMode: false,
   isFetchingSmurfs: false,
   hasFetchedSmurfs: false,
   isSavingSmurf: false,
@@ -129,6 +131,11 @@ const smurfDataReducer = (state = initialState, action) => {
         ...state,
         isDeletingSmurf: false,
         error: action.payload
+      };
+    case TOGGLE_UPDATE_MODE:
+      return {
+        ...state,
+        isInUpdateMode: !state.isInUpdateMode
       };
     default:
       return state;

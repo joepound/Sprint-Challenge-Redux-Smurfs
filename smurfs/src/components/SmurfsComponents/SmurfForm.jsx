@@ -70,13 +70,13 @@ const SmurfForm = props => {
           className="smurfs-app__new-info-form__field__label"
           htmlFor="newHeight"
         >
-          Height:
+          Height (in centimeters):
         </label>
         <input
           className="smurfs-app__new-info-form__field__input"
           id="newHeight"
           type="number"
-          placeholder="newHeight"
+          placeholder="cm."
           required
           name="newHeight"
           value={props.newHeight}

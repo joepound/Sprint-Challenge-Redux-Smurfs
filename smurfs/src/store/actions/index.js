@@ -14,6 +14,7 @@ import {
   DELETE_SMURF_START,
   DELETE_SMURF_SUCCESS,
   DELETE_SMURF_FAILURE,
+  TOGGLE_UPDATE_MODE,
   UPDATE_SMURF_START,
   UPDATE_SMURF_SUCCESS,
   UPDATE_SMURF_FAILURE
@@ -59,3 +60,6 @@ export const deleteSmurf = id => dispatch => {
     .then(res => dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETE_SMURF_FAILURE, payload: err }));
 };
+
+export const toggleUpdateMode = () => dispatch =>
+  dispatch({ type: TOGGLE_UPDATE_MODE });
