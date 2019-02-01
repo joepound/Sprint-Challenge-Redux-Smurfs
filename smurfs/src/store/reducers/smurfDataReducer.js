@@ -141,6 +141,31 @@ const smurfDataReducer = (state = initialState, action) => {
         newHeight: state.isInUpdateMode ? "" : action.payload.height,
         isInUpdateMode: !state.isInUpdateMode
       };
+    case UPDATE_SMURF_START:
+      return {
+        ...state,
+        isUpdatingSmurf: true,
+        hasUpdatedSmurf: false,
+        error: null
+      };
+    case UPDATE_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload.smurfs,
+        selectedSmurf: action.payload.foundSmurf,
+        isInUpdateMode: false,
+        isUpdatingSmurf: false,
+        hasUpdatedSmurf: true,
+        newName: "",
+        newAge: "",
+        newHeight: ""
+      };
+    case UPDATE_SMURF_FAILURE:
+      return {
+        ...state,
+        isUpdatingSmurf: false,
+        error: action.payload
+      };
     default:
       return state;
   }
