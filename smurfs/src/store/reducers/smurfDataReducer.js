@@ -120,6 +120,7 @@ const smurfDataReducer = (state = initialState, action) => {
       return {
         ...state,
         smurfs: action.payload,
+        isInUpdateMode: action.payload.length ? state.isInUpdateMode : false,
         selectedSmurf: null,
         isDeletingSmurf: false,
         hasDeletedSmurf: true,
