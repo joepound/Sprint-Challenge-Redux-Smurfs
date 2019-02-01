@@ -130,13 +130,21 @@ const SmurfForm = props => {
           />
         </div>
         <div className="smurfs-app__new-info-form__action-buttons">
-          <button type="button" onClick={props.clearTextInputs}>
+          <button
+            className="smurfs-app__new-info-form__action-buttons__clear"
+            type="button"
+            onClick={props.clearTextInputs}
+          >
             Clear
           </button>
           {props.isInUpdateMode ? (
-            <button>Update Smurf</button>
+            <button className="smurfs-app__new-info-form__action-buttons__submit">
+              Update Smurf
+            </button>
           ) : (
-            <button>Add Smurf</button>
+            <button className="smurfs-app__new-info-form__action-buttons__submit">
+              Add Smurf
+            </button>
           )}
         </div>
       </form>
@@ -159,6 +167,7 @@ SmurfForm.propTypes = {
   }),
   isInUpdateMode: PropTypes.bool.isRequired,
   handleTextInputChange: PropTypes.func.isRequired,
+  clearTextInputs: PropTypes.func.isRequired,
   addSmurf: PropTypes.func.isRequired,
   updateSmurf: PropTypes.func.isRequired
 };

@@ -1,12 +1,66 @@
 .smurfs-app__updatee {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: bold;
-  color: $smurf-blue;
+  color: $updatee-font-color;
   margin-bottom: 20px;
 
   &__name {
     text-decoration: underline;
     text-decoration-skip-ink: none;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 1px;
+  }
+}
+
+.smurfs-app__new-info-form {
+  &__field {
+    margin-bottom: 37.5px;
+    &__label {
+      display: block;
+      font-weight: bold;
+      color: $label-font-color;
+      letter-spacing: 1px;
+      padding-left: 1px;
+      margin-bottom: 12.5px;
+    }
+
+    &__input {
+      @include smoothen-input-borders($input-focus-color);
+
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+
+  &__action-buttons {
+    @include make-flex(row, center, center);
+
+    %action-button {
+      width: 37.5%;
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      padding: 10px 0 10px 0.5px;
+      margin: 5%;
+    }
+
+    &__clear {
+      @include colorize-button(
+        $clear-info-btn-bg-color,
+        $clear-info-btn-font-color
+      );
+      @extend %action-button;
+    }
+
+    &__submit {
+      @include colorize-button(
+        $submit-info-btn-bg-color,
+        $submit-info-btn-font-color
+      );
+      @extend %action-button;
+    }
   }
 }
