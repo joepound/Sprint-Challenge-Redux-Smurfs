@@ -1,0 +1,41 @@
+/* Color values */
+$cararra: #f0efe9;
+$white: #ffffff;
+$mine-shaft: #2c2c2c;
+$lightgray: #d3d3d3;
+$smurf-blue: #88CCFF;
+$amaranth: #e83f53;
+
+/*  Color assignments */
+
+// Global assignments
+$outer-bg-color: $cararra;
+$inner-bg-color: $white;
+
+// App component assignments
+$default-font-color: $mine-shaft;
+
+/* Font assignments */
+
+// Global assignments
+$body-font-family: "Roboto";
+$body-font-size: 1.8rem;
+$heading-font-family: "Roboto";
+$heading-font-size: 2.4rem;
+
+// Header component assignments
+$app-name-font-family: $heading-font-family;
+$app-name-font-size: 4.8rem;
+
+// TodoForm component assignments
+$input-focus-color: $smurf-blue;
+
+// TodoItem component assignments
+$completed-task-color: $lightgray;
+
+// Action button components assignments
+$action-buttons-area-bg-color: $lightgray;
+$clear-completed-bg-color: $amaranth;
+$clear-completed-font-color: $white;
+$add-todo-bg-color: $smurf-blue;
+$add-todo-font-color: $white;
