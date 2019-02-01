@@ -31,7 +31,7 @@ const SmurfForm = props => {
     <React.Fragment>
       {props.isInUpdateMode && (
         <span className="smurfs-app__new-info-form__updatee">
-        NOW UPDATING: {props.selectedSmurf.toUpperCase()}
+          NOW UPDATING: {props.selectedSmurf.toUpperCase()}
         </span>
       )}
       <form className="smurfs-app__new-info-form" onSubmit={addSmurf}>
@@ -91,7 +91,11 @@ const SmurfForm = props => {
         </div>
         <div className="smurfs-app__new-info-form__action-buttons">
           <div>Clear</div>
-          <button>Add Smurf</button>
+          {props.isInUpdateMode ? (
+            <button>Update Smurf</button>
+          ) : (
+            <button>Add Smurf</button>
+          )}
         </div>
       </form>
     </React.Fragment>
