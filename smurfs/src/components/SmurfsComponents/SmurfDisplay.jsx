@@ -18,27 +18,28 @@ const SmurfDisplay = props => {
   };
 
   return props.selectedSmurf ? (
-    <div>
+    <div className="smurfs-app__info-display">
+      <h2 className="smurfs-app__info-display__name">{`${
+        props.selectedSmurf.name
+      }`}</h2>
       <input
+        className="smurfs-app__info-display__update-icon"
         type="image"
-        src=""
+        src="images/edit-icon.png"
         alt="toggle update mode"
         onClick={toggleUpdateMode}
       />
-      <h2>{`${props.selectedSmurf.name}`}</h2>
-      <div>
-        <span>Age: </span>
-        <span>{props.selectedSmurf.age}</span>
+      <div className="smurfs-app__info-display__info">
+        <span className="smurfs-app__info-display__info__label">Age: </span>
+        <span className="smurfs-app__info-display__info__value">{props.selectedSmurf.age}</span>
       </div>
-      <div>
-        <span>Height: </span>
-        <span>{`${props.selectedSmurf.height}cm.`}</span>
+      <div className="smurfs-app__info-display__info">
+        <span className="smurfs-app__info-display__info__label">Height: </span>
+        <span className="smurfs-app__info-display__info__value">{`${props.selectedSmurf.height}cm.`}</span>
       </div>
-      <div>
-        <button type="button" onClick={deleteSmurf}>
-          Delete Smurf
-        </button>
-      </div>
+      <button className="smurfs-app__info-display__delete-btn" type="button" onClick={deleteSmurf}>
+        Delete Smurf
+      </button>
     </div>
   ) : (
     props.hasSmurfs && <div>(select a smurf to display)</div>

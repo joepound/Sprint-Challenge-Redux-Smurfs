@@ -7,9 +7,9 @@ import SmurfDisplay from "./SmurfDisplay";
 const SmurfsContainer = props => {
   return (
     <>
-      <SmurfForm />
       <SmurfSelector />
       <SmurfDisplay />
+      <SmurfForm />
     </>
   );
 };
