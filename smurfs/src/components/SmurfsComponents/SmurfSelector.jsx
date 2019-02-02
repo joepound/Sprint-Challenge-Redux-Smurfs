@@ -57,7 +57,11 @@ class SmurfSelector extends Component {
         </select>
       </div>
     ) : (
-      "Add some smurfs...."
+      <div className="smurfs-app__no-smurfs-msg">
+        Welcome to Smurf Village!
+        <br />
+        Come and add some smurfs with the form below.
+      </div>
     );
   }
 }

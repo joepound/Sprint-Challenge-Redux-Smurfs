@@ -19,10 +19,16 @@
   margin-bottom: 37.5px;
 }
 
+.smurfs-app__no-smurfs-msg {
+  font-size: 1.6rem;
+  line-height: 2.5;
+  margin-bottom: 37.5px;
+}
+
 .smurfs-app__info-display {
   position: relative;
   padding: 5px 20px;
-  margin: 37.5px 0;
+  margin: 37.5px 0 75px;
 
   &__name {
     text-align: center;
